@@ -1,0 +1,90 @@
+Bad things about Xmonad
+-----------------------
+None
+
+General
+-------
+can we get a second pseudo fn layer going with xmodmap? = ISO_Level3_Shift?
+can we improve power consumption? (compare to booting in windows) https://bbs.archlinux.org/viewtopic.php?id=177540
+good to use thinkfan to tweak fan settings?
+tmux for disconnecting/reconnecting from processes?
+notification when rsync finishes??
+✓ urxvt keyboard select, url select, mentioned here: https://www.youtube.com/watch?v=eaBf_yFHps8
+✓ Vim keybindings for MOCP e.g. https://github.com/arcusfelis/.moc/blob/master/keymap
+✗ Start mpd on startup - nah, no point
+
+Xmonad
+------
+can we make notifications for adjusting brightness like we did with the volume?
+can we force the confirm prompt to always appear on the main monitor?
+move/resize floated windows? https://hackage.haskell.org/package/xmonad-contrib-0.13/docs/XMonad-Actions-FloatKeys.html
+somehow set up different xmonad configs on the big screen and laptop - smaller text size and borders on laptop
+get gnome-keyring to load on X startup
+spawn jelly apps - can we make this better
+ethan schoonover's manage hoook for dealing with floated dialogs etc
+what's all this myMouseBindings?
+are sublayouts good again?
+sort out ssh authentication so they can be opened in rofi
+wtf is up with these hidden layouts
+better layout for dealing wtih > 3 windows? (sublayouts?)
+remove border from fullscreen? (Mod-f)
+chrome fullscreen (F11) only works after you jiggle the window?!
+send entire sublayout to workspace?
+stop windows in accordion layout casting shadows on each other?
+more sensible sizing of floating windows (specify dimensions in pixels or not at all rather than proportional)
+Other prompt stuff, e.g. "minimally disruptive notes", navigate by window, dmenu substitute https://braincrater.wordpress.com/2008/11/29/pimp-your-xmonad-3-prompt/
+taskwarrior for TO DO list? https://taskwarrior.org/docs/start.html
+✓ notification on volume change? useful when xmobar-alsa not working?
+✓ battery threshold stuff
+✓ screenshot posts success message even if you quit with "escape". replace with a shell script so proper behaviour can be specified?
+✓ use Shift-PgUp/PgDn to send a window to the next non-empty workspace (and go there?)
+✓ get rid of the 'boring layouts' stuff? was to do with navigating windows in 2D and avoiding windows in sublayouts
+✓ "addname" to all key bindings - see https://hackage.haskell.org/package/xmonad-contrib-0.13/docs/XMonad-Util-NamedActions.html
+✓ window finder? (exists in rofi)
+✓ Switch to browser workspace when new tab opens (just fixed itself)
+✓ better screenshot facility
+✓ switch to using chromium so upgrading system is simpler?
+✓ some sort of decoration on floated windows? - yes, but only putting a border round everything
+✓ can we put a border round rofi again? - yes, but only putting a border round everything
+✓ put layout name in status bar?
+✓ num lock on at startup
+✓ if you move an email to another workspace then the "do you really want to send this" window still pops up on the email workspace. perhaps only the main thunderbird window needs to be forced to the email workspace?
+✓ compton
+✓ make unfocused windows transparent?
+✓ urxvt server
+✓ Send particular applications to particular workspaces
+✓ 0 workspace
+✓ Youtube full screen works properly
+✓ Search shortcuts
+✓ Don't leave space for system bar on 2nd monitor
+✓ Battery monitor
+✓ Calculator button
+✓ Turn off screen / lock computer after X minutes
+✓ Stop multiple system tray pileup when recompiling Xmonad
+✓ make tabbed layout look nice
+✗ notifications - better alternative to dunst, with proper transparency/separate windows? - dunst is actually good
+✗ Use xmonad tabbing instead of Chrome tabbing?! - This is a bad idea
+✗ create 'minimal' chrome profile with no add-ons (except vimium?), and use it when starting up calendar?
+✗ click on workspaces - (major faff, would probably need to change to dzen)
+
+Ethan Schoonover - https://www.reddit.com/r/xmonad/comments/5tvc90/xmonad_config_with_sublayouts_unusual_key/
+----------------
+✓ sublayouts? https://www.reddit.com/r/xmonad/comments/5tvc90/xmonad_config_with_sublayouts_unusual_key/
+✓ personal/work chrome profiles? https://www.reddit.com/r/xmonad/comments/5tvc90/xmonad_config_with_sublayouts_unusual_key/
+
+Rofi
+----
+Always show up on active monitor - https://github.com/DaveDavenport/rofi/issues/335
+Think up good colour scheme for rofi active and urgent elements
+Vim keybindings?
+✓ Rofi error message looks bad
+✓ Colour scheme for roti
+✗ Full screen?
+
+System bar
+----------
+What do I actually want in it?
+Icons?
+Improved battery indicator?
+Can we have separate system bar on each screen, with workspace indicators? How would that work?
+✓ Volume indicator in system bar - recompile xmobar with alsa support?
