@@ -1,0 +1,120 @@
+call plug#begin('~/.vim/plugged')
+
+let g:plug_timeout = 1000
+function! BuildYCM(info)
+    " info is a dictionary with 3 fields
+    " - name:   name of the plugin
+    " - status: 'installed', 'updated', or 'unchanged'
+    " - force:  set on PlugInstall! or PlugUpdate!
+    if a:info.status == 'installed' || a:info.force
+        !./install.py --js-completer --go-completer
+    endif
+endfunction
+
+" Sensible - 'a universal set of defaults that (hopefully) everyone can agree
+" on'
+Plug 'tpope/vim-sensible'
+
+" Ale - Asynchronous linting/fixing for Vim
+Plug 'w0rp/ale'
+
+" CamelCaseMotion - A vim script to provide CamelCase motion through words
+Plug 'bkad/CamelCaseMotion'
+
+" Vim Liquid - syntax etc for liquid templates including Jekyll enhancements
+Plug 'tpope/vim-liquid'
+
+" Matchup - enhances vim's '%' motion and matching
+Plug 'andymass/vim-matchup'
+
+" NERD Commenter - automated commenting
+Plug 'scrooloose/nerdcommenter'
+
+" Solarized - The famous low-contrast colour scheme that we all know and love
+Plug 'micha/vim-colors-solarized'
+
+" YouCompleteMe - A code-completion engine for Vim
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+call plug#end()
+
+" POWERLINE
+" powerline requires python3
+let g:powerline_pycmd="py3"
+" by default powerline only appears when multiple windows are open (?!)
+" unless you set this:
+:set laststatus=2
+
+" CAMELCASEMOTION
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
+" NERD COMMENTER
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+
+" SOLARIZED
+colorscheme solarized
+set background=dark
+call togglebg#map("<F5>")
+
+" SPACES AND TABS
+set tabstop=4             " number of visual spaces per tab
+set softtabstop=4         " number of spaces in tab when editing
+set shiftwidth=4
+set expandtab             " tabs are spaces
+autocmd Filetype ruby set softtabstop=2
+autocmd Filetype ruby set shiftwidth=2
+autocmd Filetype ruby set tabstop=2
+autocmd Filetype liquid set softtabstop=2
+autocmd Filetype liquid set shiftwidth=2
+autocmd Filetype liquid set tabstop=2
+
+" UI CONFIG
+set number
+set showcmd
+set cursorline
+set number relativenumber
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+set colorcolumn=80
+
+" SEARCHING
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
+
+" set cursor in normal and insert modes
+let &t_SI .= "\<Esc>[4 q"
+let &t_EI .= "\<Esc>[2 q"
+" 1 or 0 -> blinking block
+" 2 -> steady block
+" 3 -> blinking underscore
+" 4 -> steady underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+
+" something to do with stopping the delay when changing to normal mode?!
+set timeoutlen=1000 ttimeoutlen=0
+
+" make Ctrl-C copy to both x clipboard and primary selection
+" requires gvim to be installed?!
+" see https://www.youtube.com/watch?v=E_rbfQqrm7g
+vnoremap <C-c> "*y :let @+=@*<CR>
