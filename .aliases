@@ -1,0 +1,37 @@
+# defaults for ls:
+# -N stops it putting quotes round results with spaces
+alias ls="${aliases[ls]:-ls} -hN --group-directories-first"
+
+# -i requires cp and mv to prompt for confirmation when overwriting existing files
+# -v gives feedback
+alias cp="cp -iv"
+alias mv="mv -iv"
+
+# -p creates parent directories if necessary. -v gives feedback
+alias mkdir="mkdir -pv"
+
+alias p="mpc toggle"
+alias n="mpc next"
+
+alias nts="mplayer http://134.213.27.207:8000/listen.pls"
+alias res="mplayer http://54.77.136.103:8000/resonance"
+# alias rad4="get_iplayer --stream --type=liveradio \"Radio 4 FM\" --player=\"mplayer -cache 256 -\" --modes=hlsaacstd"
+# alias rad3="get_iplayer --stream --type=liveradio \"Radio 3 FM\" --player=\"mplayer -cache 256 -\" --modes=hlsaacstd"
+
+alias m="mplayer"
+
+alias rx="xrdb ~/.Xresources"
+
+alias hosts="sudo vim /etc/hosts"
+
+alias vhosts="sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf"
+
+alias weather="curl http://wttr.in/mile+end"
+
+alias gd="cd ~/Downloads; ls -lrt"
+alias gdoc="cd ~/Documents"
+alias gm="cd ~/Music"
+
+alias config='/usr/bin/git --git-dir=/home/hives/.dotfiles/ --work-tree=/home/hives'
+
+source ~/.aliases-local
