@@ -1,5 +1,4 @@
 import XMonad
-import XMonad.Actions.ConditionalKeys
 import qualified XMonad.Actions.ConstrainedResize as Sqr
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.DynamicWorkspaces
