@@ -1,0 +1,108 @@
+#!/bin/sh
+
+# colours from colour manager go below
+# don't fiddle with these lines or it might mess everything up
+# hex values may not correspond to named colours
+
+# ʕっ•ᴥ•ʔっ COLOURS START
+colour=#dc322f
+# ʕっ•ᴥ•ʔっ COLOURS END
+
+output=""
+
+# check if mpd is running
+if [ -f ~/.config/mpd/pid ]
+then
+	
+	mpc_output=$(mpc)
+	playing=$(echo "$mpc_output" | sed '2!d' | tr -s ' ' | cut -d ' ' -f 1)
+	
+	if [ "$playing" == "[playing]" ] || [ "$playing" == "[paused]" ]
+	then
+
+		artist_and_track=$(echo "$mpc_output" | sed '1!d')
+		thyme=$(echo "$mpc_output" | sed '2!d' | tr -s ' ' | cut -d ' ' -f 3)
+
+		if [ "$playing" == "[playing]" ]
+		then
+			icon=" "
+		elif [ "$playing" == "[paused]" ]
+		then
+			icon=" "
+		fi
+
+		output="$icon$artist_and_track $thyme"
+
+	echo "<fc=$colour>$output</fc> | "
+
+	fi
+fi
+
+
+## this part mostly comes from here https://gist.github.com/RobertAudi/464598
+## check if moc is running
+#if [ -f ~/.moc/pid ]
+#then
+#
+#	# get info about moc's status
+#	info=$(mocp -i)
+#
+#	# Parse mocp output.
+#	while IFS=': ' read -r field value; do
+#		case $field in
+#			State)
+#				case $value in
+#					STOP) state='stop';;
+#					PLAY) state='';;
+#					PAUSE) state='';;
+#				esac
+#			;;
+#			
+#			Artist)      artist=$value;;
+#			Album)       album=$value;;
+#			SongTitle)   title=$value;;
+#			CurrentTime) currenttime=$value;;
+#			TotalTime)   totaltime=$value;;
+#			
+#			File)        file=$( basename "$value" );;
+#		esac
+#	done <<< "$info"
+#
+#	
+#	if [[ $1 ]] # what is this?!
+#	then
+#		# no idea what all of this does?!
+#		case "$1" in
+#			'state'|'STATE'|'State')
+#				echo $state
+#			;;
+#			'artist'|'ARTIST'|'Artist')
+#				echo $artist
+#			;;
+#			'song'|'SONG'|'Song')
+#				echo $title
+#			;;
+#			'album'|'ALBUM'|'Album')
+#				echo $album
+#			;;
+#			*)
+#				echo "$1"
+#			;;
+#		esac
+#	else
+#		if ! [[ $state = "stop" ]]
+#		then
+#			if [[ $artist = "" ]] && [[ $title = "" ]]
+#			then
+#				echo "<fc=$colour>$state $file $currenttime/$totaltime</fc> | "
+#			else
+#				[[ $artist = "" ]] && artist="<?!?>"
+#				[[ $title = "" ]] && title="<?!?>"
+#				echo "<fc=$colour>$state $artist - $title $currenttime/$totaltime</fc> | "
+#			fi
+#		fi
+#	fi
+#
+#	
+#fi
+#

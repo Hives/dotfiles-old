@@ -1,0 +1,7 @@
+#! /bin/bash
+
+python $HOME/.scripts/colour-manager.py $1
+
+xmonad --restart
+xrdb /home/hives/.Xresources
+pkill -SIGHUP urxvt

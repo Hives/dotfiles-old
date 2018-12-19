@@ -1,0 +1,13 @@
+#!/bin/bash
+filename="$HOME/less-standalone.tmp"
+if [ $# -ge 1 -a -f "$1" ]
+then
+	input="$1"
+    cat "$input" > "$filename"
+else
+#	echo "That file is no good :("
+#	exit 1
+    cat /dev/stdin > "$filename"
+fi
+urxvt -title "Paul's Special Less" -e less "$filename" -m -+S
+rm "$filename"

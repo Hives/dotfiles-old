@@ -1,0 +1,30 @@
+#! /bin/bash
+
+if [ "$(pgrep xmonad)" ]
+then 
+        echo "Xmonad is running"
+        xmonad --restart
+else
+        echo "Xmonad isn't running"
+fi
+
+if [ "$(pgrep Xorg)" ]
+then 
+        echo "Xorg is running"
+        xrdb /home/hives/.Xresources
+        $HOME/.scripts/brainstorm-wallpaper
+else
+        echo "Xorg isn't running"
+fi
+
+if [ "$(pgrep urxvt)" ]
+then 
+        echo "URxvt is running"
+
+        # reload urxvt colour scheme with urxvt-config-reload
+        pkill -SIGHUP urxvt
+else
+        echo "URxvt isn't running"
+fi
+
+killall dunst

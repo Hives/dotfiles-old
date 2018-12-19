@@ -1,0 +1,14 @@
+#! /bin/sh
+
+# load custom keymap with tab and backslash set to hyper, and pseudo-fn layer
+xkbcomp $HOME/.xkb/magicforce68-leftfn-mode_shift.xkb $DISPLAY
+
+# kill any instance of xcape that may already be running
+killall xcape -q
+
+# make the two hypers act like their normal keys when tapped
+xcape -e 'Super_L=Tab;Super_R=backslash'
+# this seems not to work when mode shift and hyper are both activated.......
+
+# make tapped Ctrl behave like Escape, but with a very short timeout
+xcape -e 'Control_L=Escape' -t 150

@@ -1,0 +1,45 @@
+xkb_keymap {
+	xkb_keycodes      { include "evdev+aliases(qwerty)"	};
+	xkb_types         { include "complete"	};
+	xkb_compat        {
+        include "complete"
+    };
+
+	xkb_symbols       {
+        
+        // ctrl(nocaps) removes caps lock and replaces it with another ctrl
+        // include "pc+us+inet(evdev)+ctrl(nocaps)"
+        include "pc+us+inet(evdev)"
+
+        // press tab, get hyper
+		key  <TAB> { [ Hyper_L, Hyper_L                        ] };
+        // maps tab back to keycode so it's still available to xcape
+		key <I252> { [ Tab,  ISO_Left_Tab                      ] };
+
+        // press backslash, get hyper
+		key <BKSL> { [ Hyper_R, Hyper_R                        ] };
+        // maps backslash back to keycode so it's still available to xcape
+		key <I253> { [ backslash, bar                          ] };
+
+        // key <LCTL> { [ ISO_Next_Group ],   // g1: switch to g2
+        //              [ ISO_Prev_Group ] }; // g2: switch to g1
+
+        // This seems to let you get the second group of keysyms using the left control button...
+        key <CAPS> { [ Mode_switch ] };
+
+        key <AD08> { [ i, I ], [ Up, Up ] };
+        key <AC07> { [ j, J ], [ Left, Left ] };
+        key <AC08> { [ k, K ], [ Down, Down ] };
+        key <AC09> { [ l, L ], [ Right, Right ] };
+
+        key <AD07> { [ u, U ], [ Home, Home ] };
+        key <AD09> { [ o, O ], [ End, End ] };
+
+        key <AC06> { [ h, H ], [ Prior, Prior ] };
+        key <AB06> { [ n, N ], [ Next, Next ] };
+
+        key <AB07> { [ m, M ], [ BackSpace, BackSpace ] };
+        key <AB08> { [ comma, less ], [ Delete, Delete ] };
+	};
+
+};

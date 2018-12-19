@@ -1,0 +1,3 @@
+#! /bin/sh
+
+chromium --app="https://calendar.google.com/calendar/render#main_7%7Cmonth" --new-window --profile-directory="Default"

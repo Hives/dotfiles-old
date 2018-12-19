@@ -1,0 +1,81 @@
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+! base03
+*background:              #f7f3ea
+
+! base0
+*foreground:              #6d787c
+
+! base03
+*fadeColor:               #f7f3ea
+
+! base1
+*cursorColor:             #5f6a6e
+
+! base01
+*pointerColorBackground:  #979e9e
+
+! base1
+*pointerColorForeground:  #5f6a6e
+
+! base02
+*highlight:               #e8e5db
+
+! base03
+*border:                  #f7f3ea
+
+! base02
+*color0:                  #e8e5db
+
+! red
+*color1:                  #dc322f 
+
+! green
+*color2:                  #859900 
+
+! yellow
+*color3:                  #b58900 
+
+! blue
+*color4:                  #268bd2 
+
+! magenta
+*color5:                  #d33682 
+
+! cyan
+*color6:                  #2aa198 
+
+! base2
+*color7:                  #162d33
+
+! orange
+*color9:                  #cb4b16 
+
+! base03
+*color8:                  #f7f3ea
+
+! base01
+*color10:                 #979e9e
+
+! base00
+*color11:                 #889091
+
+! base0
+*color12:                 #6d787c
+
+! violet
+*color13:                 #6c71c4 
+
+! base1
+*color14:                 #5f6a6e
+
+! base3
+*color15:                 #0e2329
+

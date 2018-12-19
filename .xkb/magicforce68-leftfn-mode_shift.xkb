@@ -1,0 +1,63 @@
+// To get the current xkb config, run this command: xkbcomp $DISPLAY xkb.dump
+// There's a map of the 4-character key names on this page: https://www.charvolant.org/doug/xkb/html/node5.html
+
+xkb_keymap {
+	xkb_keycodes      { include "evdev+aliases(qwerty)"	};
+	xkb_types         { include "complete"};
+	xkb_compatibility { include "complete" };
+
+	xkb_symbols       {
+        
+        // look in /usr/share/X11/xkb/symbols for things you can include here
+        // ctrl(nocaps) removes caps lock and replaces it with another ctrl
+        // level3(ralt_switch) makes right alt access the third shift level
+        include "pc+us+inet(evdev)+ctrl(nocaps)+level3(ralt_switch)"
+
+        key <LWIN> { [ Mode_switch, Mode_switch ] };
+        
+        // press tab, get super
+		key  <TAB> { [ Super_L, Super_L ] };
+        // maps real tab behaviour to some random keycode so it's still available to xcape
+		key <I252> { [ Tab, ISO_Left_Tab ] };
+
+        // press backslash, get super
+		key <BKSL> { [ Super_R, Super_R ] };
+        // maps real backslash key behaviour to some random keycode so it's still available to xcape
+		key <I253> { [ backslash, bar ] };
+
+        key <AE01> { [     1,          exclam ],           [ F1,  F1  ] };
+        key <AE02> { [     2,              at ],           [ F2,  F2  ] };
+        key <AE03> { [     3,      numbersign, sterling ], [ F3,  F3  ] };
+        key <AE04> { [     4,          dollar ],           [ F4,  F4  ] };
+        key <AE05> { [     5,         percent ],           [ F5,  F5  ] };
+        key <AE06> { [     6,     asciicircum ],           [ F6,  F6  ] };
+        key <AE07> { [     7,       ampersand ],           [ F7,  F7  ] };
+        key <AE08> { [     8,        asterisk ],           [ F8,  F8  ] };
+        key <AE09> { [     9,       parenleft ],           [ F9,  F9  ] };
+        key <AE10> { [     0,      parenright ],           [ F10, F10 ] };
+        key <AE11> { [ minus,      underscore ],           [ F11, F11 ] };
+        key <AE12> { [ equal,            plus ],           [ F12, F12 ] };
+
+        key <AD03> { [ e, E, EuroSign ] };
+
+        key <AD06> { [ y, Y ], [ Home ] };
+        key <AD07> { [ u, U ], [ Next ] };
+        key <AD08> { [ i, I ], [ Prior ] };
+        key <AD09> { [ o, O ], [ End ] };
+
+        key <AC06> { [ h, H ], [ Left ] };
+        key <AC07> { [ j, J ], [ Down ] };
+        key <AC08> { [ k, K ], [ Up ] };
+        key <AC09> { [ l, L ], [ Right ] };
+
+        key <AB08> { [ comma, less ], [ BackSpace ] };
+        key <AB09> { [ period, greater ], [ Delete ] };
+
+        key <RCTL> { [ Control_R ], [ Menu ] };
+
+        key <PGUP> { [ Prior ], [ Home, Home ] };
+        key <PGDN> { [ Next ], [ End, End ] };
+
+	};
+
+};

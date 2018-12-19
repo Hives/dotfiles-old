@@ -1,0 +1,12 @@
+#! /bin/bash
+
+maim -u -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i;
+
+if [ "${PIPESTATUS[0]}" -eq 0 ]
+then
+    notify-send "Screengrab copied to clipboard" --icon=camera-photo
+fi
+
+# you can't paste this into Thunderbird, because it won't accept the image in image/png format.
+# a way to make it work in Thunderbird can be found here
+# https://askubuntu.com/questions/759651/how-to-copy-an-image-to-the-clipboard-from-a-file-using-command-line

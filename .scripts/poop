@@ -1,0 +1,3 @@
+[ -f ~/.config/mpd/pid ] || mpd
+[ -f ~/.mpdscribble/pid ] || mpdscribble
+ncmpcpp

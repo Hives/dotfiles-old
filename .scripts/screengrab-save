@@ -1,0 +1,23 @@
+#! /bin/sh
+
+datetime="$(date +'%Y-%m-%d_%H-%M-%S')"
+filename="Screenshot_$datetime.png"
+folder="$HOME/Pictures/screenshots"
+filepath="$folder/$filename"
+
+if [ ! -e "$filepath" ]
+then
+    
+    maim -s --format png "$filepath" -u
+
+    if [ "${PIPESTATUS[0]}" -eq 0 ]
+    then
+        notify-send "Screengrab saved" --icon=camera-photo
+    fi
+
+else
+
+notify-send --urgency=normal "Can't take screenshot
+File already exists!?" --icon=dialog-warning
+
+fi

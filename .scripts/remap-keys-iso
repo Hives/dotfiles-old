@@ -1,0 +1,19 @@
+#! /bin/sh
+
+# set keyboard layout to UK
+# setxkbmap gb
+
+# load custom keymap with tab and backslash set to hyper
+xkbcomp $HOME/.xkb/keys-iso.xkb $DISPLAY
+
+# kill any instance of xcape that may already be running
+killall xcape -q
+
+# make the hyper act like its normal keys when tapped
+xcape -e 'Hyper_L=Tab'
+
+# make tapped Ctrl behave like Escape but with a very short timeout
+xcape -e 'Control_L=Escape' -t 150
+
+# load combo-modifier and function layer
+#xmodmap "$HOME/.scripts/special-fn-layer-iso.xmodmap"

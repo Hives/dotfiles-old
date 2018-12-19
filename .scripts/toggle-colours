@@ -1,0 +1,29 @@
+#! /bin/bash
+
+#darkorlight="$HOME/.config/xcolors/dark-or-light"
+#
+#if [ -f $darkorlight ] && [ $(head -1 $darkorlight) == "dark" ]
+#then
+#    echo "changing to light scheme" 
+#    echo "light" > $darkorlight
+#    python $HOME/bin/colour-manager.py light-scheme
+#
+#else
+#    echo "changing to dark scheme"
+#    echo "dark" > $darkorlight
+#    python $HOME/bin/colour-manager.py dark-scheme
+#
+#fi
+
+darkmode="$HOME/.config/darkmode"
+
+if [ -e $darkmode ]
+then
+    rm $darkmode
+    python $HOME/.scripts/colour-manager.py light-scheme
+else
+    touch $darkmode
+    python $HOME/.scripts/colour-manager.py dark-scheme
+fi
+
+$HOME/.scripts/refresh-colours

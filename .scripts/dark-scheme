@@ -1,0 +1,12 @@
+#! /bin/bash
+
+#darkorlight="$HOME/.config/xcolors/dark-or-light"
+#
+#echo "loading dark scheme"
+#echo "dark" > $darkorlight
+
+touch "$HOME/.config/darkmode"
+
+python $HOME/.scripts/colour-manager.py dark-scheme
+
+$HOME/.scripts/refresh-colours

@@ -1,0 +1,95 @@
+#!/bin/bash
+version=0.03
+# created by abarilla
+# modified by wujaklija
+# modified by ^^FiCK^^
+# from https://bbs.archlinux.org/viewtopic.php?id=69589&p=2
+# and then modified by hivemind
+
+# Config
+# max_line is the maximum length of the volume bar. It depends on the size of the Dunst bubble.
+max_line=17
+
+# Default values
+command=
+increment=2
+mixer="Master"
+ssh="Shh..."
+
+usage="$0 Version $version Help\nDependencies: libnotify, alsa-utils\nusage:\n\t $0  [OPTIONS] -c COMMAND \nCOMMAND:\n-c\t up \n\t\t(increase volume by increment)\n\tdown \n\t\t(decrease volume by increment)\n\tmute \n\t\t(mute volume) \n\nOPTIONS:\n-i\t increment \n\t\t(the amount of db to increase/decrease)[default:$increment%] \n-m\t mixer \n\t\t(the device to change)[default:$mixer]"
+
+while getopts "c:i:m:h" o
+do case "$o" in
+    c) command=$OPTARG;;
+    i) increment=$OPTARG;;
+    m) mixer=$OPTARG;;
+    h) echo -e "$usage"; exit 0;;
+    ?) echo -e "$usage"; exit 0;;
+esac
+done
+
+display_volume=0
+icon_name=""
+if [ "$command" = "up" ]; then
+	display_volume=$(amixer set $mixer $increment%+ unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+else 
+	if [ "$command" = "down" ]; then
+		display_volume=$(amixer set $mixer $increment%- unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+	else 
+		if [ "$command" = "mute" ]; then
+			if amixer get Master | grep "\[on\]" > /dev/null; then
+				display_volume=0
+				icon_name="audio-volume-muted"
+				amixer set $mixer mute > /dev/null
+			else
+				display_volume=$(amixer set $mixer unmute | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1)
+			fi
+		else
+			echo -e $usage
+			exit 1
+		fi
+	fi
+fi
+
+if [ "$icon_name" = "" ]; then
+	if [ "$display_volume" = "0" ]; then
+		icon_name="audio-volume-muted"
+	else
+		if [ "$display_volume" -lt "33" ]; then
+			icon_name="audio-volume-low"
+		else
+			if [ "$display_volume" -lt "67" ]; then
+				icon_name="audio-volume-medium"
+			else
+				icon_name="audio-volume-high"
+			fi
+		fi
+	fi
+fi
+
+
+if [ "$command" = "mute" ] && [ "$display_volume" = 0 ]; then
+	# dunstify "Muted" "$ssh" -i $icon_name -t 1000 -r 666 -h int:value:$display_volume -h string:synchronous:volume 
+	dunstify "Muted" "$ssh" -i $icon_name -t 1500 -r 666 
+else
+	if [ "$display_volume" = "0" ]; then
+		bar="$ssh"
+	else
+		bar_length_times_four=$(($max_line*$display_volume/25))
+		bar_length=$((bar_length_times_four/4))
+
+		bar=$(awk 'BEGIN {while (i++ < '"$bar_length"') printf "━"}')
+
+		bar_remainder=$((bar_length_times_four%4))
+		case "$bar_remainder" in
+			"0") bar_fraction=;;
+			"1") bar_fraction=╴;;
+			"2") bar_fraction=╸;;
+			"3") bar_fraction=╾;;
+		esac
+	fi
+
+	# dunstify "Volume: $display_volume%" "$bar$bar_fraction" -i $icon_name -t 1000 -r 666 -h int:value:$display_volume -h string:synchronous:volume 
+	dunstify "Volume: $display_volume%" "$bar$bar_fraction" -i $icon_name -t 1000 -r 666 
+fi
+

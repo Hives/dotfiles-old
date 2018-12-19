@@ -1,0 +1,18 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     { include "complete"	};
+	xkb_compat    { include "complete"	};
+	xkb_symbols   {
+
+        // ctrl(nocaps) removes caps lock and replaces it with another left control
+        include "pc+gb+inet(evdev)+ctrl(nocaps)"
+
+        // press tab, get hyper
+		key  <TAB> { [ Hyper_L, Hyper_L                        ] };
+        // maps real tab behavior to some random keycode so it's still available to xcape
+		key <I252> { [ Tab,  ISO_Left_Tab                      ] };
+ 
+	};
+	xkb_geometry  { include "pc(pc105)"	};
+
+};
