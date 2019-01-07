@@ -178,10 +178,10 @@ scratchpads =
     -- , NS "downloads"    (myTerminal ++ " -name terminal-scratchpad -cd $HOME/Downloads") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
     , NS "htop"         "urxvtc -name htop-scratchpad -e htop" (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
     , NS "alsamixer"    "urxvtc -e alsamixer" (title =? "alsamixer") (centerScreen 0.6 0.7)
-    , NS "ncmpcpp"      "urxvtc -name ncmpcpp -e poop" (resource =? "ncmpcpp") (centerScreen 0.7 0.7)
+    -- , NS "musicplayer"  "urxvtc -name ncmpcpp -e poop" (resource =? "ncmpcpp") (centerScreen 0.7 0.7)
+    , NS "musicplayer"  "/usr/bin/mocp-scrobbler.py -d; urxvtc -name mocp -e mocp" (resource =? "mocp") (centerScreen 0.7 0.7)
     , NS "calculator"   "speedcrunch" (className =? "SpeedCrunch") (placeWindow 0.05 0.05 0.55 0.55)
     , NS "calendar"     "$HOME/.scripts/launch-google-calendar-app" (fmap ("calendar.google.com" `isInfixOf`) appName) (rightPanel 0.02)
-    -- , NS "mocp"       "/usr/bin/mocp-scrobbler.py -d; urxvtc -name mocp -e mocp" (resource =? "mocp") (centerScreen 0.7 0.7)
     -- , NS "ghci"       "urxvtc -e ghci" (title =? "ghci") (centerScreen 0.7 0.7)
     ]
 
@@ -542,8 +542,8 @@ myKeys2 conf = let
     , ("M1-<Print>"              , addName "Save screengrab of active window"    $ spawn ("$HOME/.scripts/screengrab-save-window"))
     , ("M1-C-<Return>"           , addName "NSP terminal"                        $ namedScratchpadAction scratchpads "terminal")
     -- , ("M1-C-d"                  , addName "NSP terminal (~/Downloads)"          $ namedScratchpadAction scratchpads "downloads")
-    , ("M-m"                     , addName "NSP ncmpcpp"                         $ namedScratchpadAction scratchpads "ncmpcpp")
-    , ("<XF86Tools>"             , addName "NSP ncmpcpp"                         $ namedScratchpadAction scratchpads "ncmpcpp")
+    , ("M-m"                     , addName "NSP music player"                    $ namedScratchpadAction scratchpads "musicplayer")
+    , ("<XF86Tools>"             , addName "NSP music player"                    $ namedScratchpadAction scratchpads "musicplayer")
     , ("M-c"                     , addName "NSP Google"                          $ namedScratchpadAction scratchpads "calendar")
     , ("M-S-h"                   , addName "NSP htop"                            $ namedScratchpadAction scratchpads "htop")
     , ("M-v"                     , addName "NSP alsamixer"                       $ namedScratchpadAction scratchpads "alsamixer")
@@ -587,23 +587,23 @@ myKeys2 conf = let
     -----------------------------------------------------------------------
 
     subKeys "Media controls"
-    [ ("<XF86AudioPlay>"         , addName "Play/pause"                          $ spawn "mpc toggle")
-    -- , ("<XF86AudioNext>"         , addName "Next track"                          $ spawn "mpc next")
-    -- , ("<XF86AudioPrev>"         , addName "Previous track"                      $ spawn "mpc prev")
-    , ("<XF86AudioNext>"         , addName "Seek forwards 10s"                   $ spawn "mpc seek +00:00:05")
-    , ("<XF86AudioPrev>"         , addName "Seek backwards 10s"                  $ spawn "mpc seek -00:00:05")
-    , ("<XF86AudioStop>"         , addName "Stop music"                          $ spawn "mpc stop")
-
-    , ("<XF86AudioRaiseVolume>"  , addName "Volume +2%"                          $ spawn "$HOME/.scripts/vol -c up -i 2")
+    [ ("<XF86AudioRaiseVolume>"  , addName "Volume +2%"                          $ spawn "$HOME/.scripts/vol -c up -i 2")
     , ("<XF86AudioLowerVolume>"  , addName "Volume -2%"                          $ spawn "$HOME/.scripts/vol -c down -i 2")
     , ("S-<XF86AudioRaiseVolume>", addName "Volume +10%"                         $ spawn "$HOME/.scripts/vol -c up -i 10")
     , ("S-<XF86AudioLowerVolume>", addName "Volume -10%"                         $ spawn "$HOME/.scripts/vol -c down -i 10")
     , ("<XF86AudioMute>"         , addName "Toggle volume"                       $ spawn "$HOME/.scripts/vol -c mute")
 
-    -- , ("<XF86AudioPlay>"         , addName "Play/pause"                         $ spawn "mocp -G")
-    -- , ("<XF86AudioNext>"         , addName "Next track"                         $ spawn "mocp -f")
-    -- , ("<XF86AudioPrev>"         , addName "Previous track"                     $ spawn "mocp -r")
-    -- , ("<XF86AudioStop>"         , addName "Stop music"                         $ spawn "mocp -s")
+    -- , ("<XF86AudioPlay>"         , addName "Play/pause"                          $ spawn "mpc toggle")
+    -- -- , ("<XF86AudioNext>"         , addName "Next track"                          $ spawn "mpc next")
+    -- -- , ("<XF86AudioPrev>"         , addName "Previous track"                      $ spawn "mpc prev")
+    -- , ("<XF86AudioNext>"         , addName "Seek forwards 10s"                   $ spawn "mpc seek +00:00:05")
+    -- , ("<XF86AudioPrev>"         , addName "Seek backwards 10s"                  $ spawn "mpc seek -00:00:05")
+    -- , ("<XF86AudioStop>"         , addName "Stop music"                          $ spawn "mpc stop")
+
+    , ("<XF86AudioPlay>"         , addName "Play/pause"                         $ spawn "mocp -G")
+    , ("<XF86AudioNext>"         , addName "Next track"                         $ spawn "mocp -f")
+    , ("<XF86AudioPrev>"         , addName "Previous track"                     $ spawn "mocp -r")
+    , ("<XF86AudioStop>"         , addName "Stop music"                         $ spawn "mocp -s")
     ]
 
     where
