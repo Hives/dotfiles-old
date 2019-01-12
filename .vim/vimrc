@@ -11,26 +11,13 @@ function! BuildYCM(info)
     endif
 endfunction
 
-" Sensible - 'a universal set of defaults that (hopefully) everyone can agree
-" on'
-Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible' " a set of sensible defaults
+Plug 'w0rp/ale' " asynchronous linting/fixing
+Plug 'chaoren/vim-wordmotion' " provides CamelCase motion through words
+Plug 'tpope/vim-liquid' " syntax highlighting for liquid + jekyll enhancements
+Plug 'andymass/vim-matchup' " enhances vim's '%' motion and matching
+Plug 'scrooloose/nerdcommenter' " automated commenting
 
-" Ale - Asynchronous linting/fixing for Vim
-Plug 'w0rp/ale'
-
-" CamelCaseMotion - A vim script to provide CamelCase motion through words
-Plug 'bkad/CamelCaseMotion'
-
-" Vim Liquid - syntax etc for liquid templates including Jekyll enhancements
-Plug 'tpope/vim-liquid'
-
-" Matchup - enhances vim's '%' motion and matching
-Plug 'andymass/vim-matchup'
-
-" NERD Commenter - automated commenting
-Plug 'scrooloose/nerdcommenter'
-
-" Solarized - The famous low-contrast colour scheme that we all know and love
 Plug 'micha/vim-colors-solarized'
 
 " YouCompleteMe - A code-completion engine for Vim
@@ -44,16 +31,6 @@ let g:powerline_pycmd="py3"
 " by default powerline only appears when multiple windows are open (?!)
 " unless you set this:
 :set laststatus=2
-
-" CAMELCASEMOTION
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
 
 " NERD COMMENTER
 let g:NERDSpaceDelims = 1
@@ -82,6 +59,7 @@ autocmd Filetype liquid set tabstop=2
 set number
 set showcmd
 set cursorline
+" set cursorcolumn
 set number relativenumber
 augroup numbertoggle
     autocmd!

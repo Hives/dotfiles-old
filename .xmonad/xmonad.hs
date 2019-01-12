@@ -512,7 +512,7 @@ myKeys2 conf = let
 
     , ("M-\\"                    , addName "Mirror layout"                       $ sendMessage $ Toggle MIRROR)
 
-    , ("M-+"                     , addName "Decrease window spacing"             $ decScreenWindowSpacing 2)
+    , ("M-S-="                     , addName "Decrease window spacing"             $ decScreenWindowSpacing 2)
     , ("M--"                     , addName "Increase window spacing"             $ incScreenWindowSpacing 2)
     , ("M-w"                     , addName "Reset window spacing"                $ setScreenWindowSpacing 6)
 

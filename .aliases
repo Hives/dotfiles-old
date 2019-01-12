@@ -32,6 +32,4 @@ alias gd="cd ~/Downloads; ls -lrt"
 alias gdoc="cd ~/Documents"
 alias gm="cd ~/Music"
 
-alias config='/usr/bin/git --git-dir=/home/hives/.dotfiles/ --work-tree=/home/hives'
-
 source ~/.aliases-local
