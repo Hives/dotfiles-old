@@ -1,0 +1,12 @@
+#!/bin/sh
+# filename=$(ls /home/hives/Pictures/nice\ stuff/brainstorm/wallpapers/*.png | sort -R | tail -1)
+# feh --bg-fill "$filename"
+
+darkmode="$HOME/.config/darkmode"
+
+if [ -e $darkmode ]
+then
+        feh --randomize --bg-fill /home/hives/Pictures/brainstorm/wallpapers/*.png
+else
+        feh --randomize --bg-fill /home/hives/Pictures/brainstorm/wallpapers/inverted/*.png
+fi

@@ -12,7 +12,7 @@ if [ "$(pgrep Xorg)" ]
 then 
         echo "Xorg is running"
         xrdb /home/hives/.Xresources
-        $HOME/.scripts/brainstorm-wallpaper
+        $HOME/.scripts/wallpaper
 else
         echo "Xorg isn't running"
 fi
