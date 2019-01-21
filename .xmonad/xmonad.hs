@@ -243,7 +243,7 @@ myManageHook = composeAll
     , appName =? "feh" --> doCenterFloat
 
     -- Send applications to workspaces
-    , appName =? "web.skype.com__en" --> doShift "1" <+> unfloat
+    , appName =? "preview.web.skype.com__en" --> doShift "1" <+> unfloat
     , appName =? "skype" --> doShift "1" <+> unfloat
     , appName =? "jellymould-group.slack.com__messages" --> doShift "1" <+> unfloat
     , appName =? "soulseekqt" --> doShift "2"
