@@ -14,7 +14,7 @@ xscreensaver -no-splash &
 "${HOME}/.dropbox-dist/dropboxd" &
 autokey-gtk &
 # nm-applet --sm-disable &
-urxvtd -q -f -o
+# urxvtd -q -f -o
 numlockx &
 
 # gnome keyring, necessary for mailspring

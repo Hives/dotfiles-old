@@ -161,25 +161,31 @@ myClickJustFocuses   = True
 -- Applications
 ------------------------------------------------------------------------
 
-myTerminal    = "urxvtc"
+myTerminal    = "st"
 -- myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1 -show-icons true"
 myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1"
-myFileBrowser = "urxvtc -e ranger"
+myFileBrowser = myTerminal ++ " -e ranger"
 
 jellyBrowser  = "dex $HOME/.local/share/applications/chromium-jelly.desktop"
 jellySlack    = "dex $HOME/.local/share/applications/chromium-slack-jelly.desktop"
 jellySkype    = "dex $HOME/.local/share/applications/chromium-skype-jelly.desktop"
 -- jellySkype    = "skypeforlinux"
 jellyEmail    = "thunderbird"
-jellyNotes    = "urxvtc -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
+jellyNotes    = myTerminal ++ " -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
 
 scratchpads =
-    [ NS "terminal"     (myTerminal ++ " -name terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
-    -- , NS "downloads"    (myTerminal ++ " -name terminal-scratchpad -cd $HOME/Downloads") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
-    , NS "htop"         "urxvtc -name htop-scratchpad -e htop" (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
-    , NS "alsamixer"    "urxvtc -e alsamixer" (title =? "alsamixer") (centerScreen 0.6 0.7)
+    -- urxvt terminal apps
+    -- [ NS "terminal"     (myTerminal ++ " -name terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
+    -- , NS "htop"         "urxvtc -name htop-scratchpad -e htop" (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
+    -- , NS "alsamixer"    "urxvtc -e alsamixer" (title =? "alsamixer") (centerScreen 0.6 0.7)
     -- , NS "musicplayer"  "urxvtc -name ncmpcpp -e poop" (resource =? "ncmpcpp") (centerScreen 0.7 0.7)
-    , NS "musicplayer"  "/usr/bin/mocp-scrobbler.py -d; urxvtc -name mocp -e mocp" (resource =? "mocp") (centerScreen 0.7 0.7)
+
+    -- suckless terminal apps
+    [ NS "terminal"     (myTerminal ++ " -n terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
+    , NS "htop"         (myTerminal ++ " -n htop-scratchpad -e htop") (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
+    , NS "alsamixer"    (myTerminal ++ " -e alsamixer") (title =? "alsamixer") (centerScreen 0.6 0.7)
+    , NS "musicplayer"  ("/usr/bin/mocp-scrobbler.py -d; " ++ myTerminal ++ " -n mocp -e mocp") (resource =? "mocp") (centerScreen 0.7 0.7)
+
     , NS "calculator"   "speedcrunch" (className =? "SpeedCrunch") (placeWindow 0.05 0.05 0.55 0.55)
     , NS "calendar"     "$HOME/.scripts/launch-google-calendar-app" (fmap ("calendar.google.com" `isInfixOf`) appName) (rightPanel 0.02)
     -- , NS "ghci"       "urxvtc -e ghci" (title =? "ghci") (centerScreen 0.7 0.7)
