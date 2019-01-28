@@ -20,9 +20,17 @@ darkmode="$HOME/.config/darkmode"
 if [ -e $darkmode ]
 then
     rm $darkmode
+    if [ "$(pgrep kitty)" ]
+    then
+        kitty \@ set-colors \-\-all \-\-configured $HOME/.config/kitty/light.conf
+    fi
     python $HOME/.scripts/colour-manager.py light-scheme
 else
     touch $darkmode
+    if [ "$(pgrep kitty)" ]
+    then
+        kitty \@ set-colors \-\-all \-\-configured $HOME/.config/kitty/dark.conf
+    fi
     python $HOME/.scripts/colour-manager.py dark-scheme
 fi
 
