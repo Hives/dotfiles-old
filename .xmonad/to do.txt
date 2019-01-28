@@ -2,20 +2,12 @@ Bad things about Xmonad
 -----------------------
 None
 
-Font woes
+Terminals
 ---------
-The characters that Input Mono Compressed is not displaying, it seems to be
-because they don't have that character (e.g. right arrow, used in spaceship-
-prompt), and the system is falling back to some other font, which is too wide
-to fit in the space of one Input Mono Compressed character, or something?
-
-I tried some other narrow programming fonts (e.g. Iosevka) and they had the
-same problem. I don't think patching the fonts with e.g. Powerline or Nerd
-Fonts will fix it because they don't seem to include the glyphs in question,
-e.g right arrow.
-
-Possible fix would be... specifying a better fallback font which would actually
-display? But how do you do that?
+URxvt: Bad unicode support, pretty good everything else
+st: Good unicode support, good image support, pain in the ass to configure, colours mess up on vim UI elements (airline etc)
+Termite: No image support, good unicode support
+Kitty: Good unicode support, good image support, "featureful"
 
 General
 -------
