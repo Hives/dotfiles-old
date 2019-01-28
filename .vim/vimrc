@@ -17,6 +17,7 @@ Plug 'chaoren/vim-wordmotion' " provides CamelCase motion through words
 Plug 'tpope/vim-liquid' " syntax highlighting for liquid + jekyll enhancements
 Plug 'andymass/vim-matchup' " enhances vim's '%' motion and matching
 Plug 'scrooloose/nerdcommenter' " automated commenting
+Plug 'bling/vim-airline' " lean, powerline-style status line
 
 Plug 'micha/vim-colors-solarized'
 
@@ -25,12 +26,12 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
-" POWERLINE
-" powerline requires python3
-let g:powerline_pycmd="py3"
-" by default powerline only appears when multiple windows are open (?!)
-" unless you set this:
-:set laststatus=2
+" " POWERLINE
+" " powerline requires python3
+" let g:powerline_pycmd="py3"
+" " by default powerline only appears when multiple windows are open (?!)
+" " unless you set this:
+" :set laststatus=2
 
 " NERD COMMENTER
 let g:NERDSpaceDelims = 1
