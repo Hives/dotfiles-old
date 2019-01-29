@@ -161,7 +161,7 @@ myClickJustFocuses   = True
 -- Applications
 ------------------------------------------------------------------------
 
-myTerminal    = "kitty --single-instance -o enabled_layouts=tall "
+myTerminal    = "kitty --single-instance -o enabled_layouts=tall --listen-on unix:/tmp/mykitty"
 -- myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1 -show-icons true"
 myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1"
 myFileBrowser = myTerminal ++ " ranger"
@@ -175,11 +175,11 @@ jellyNotes    = "urxvt -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
 
 scratchpads =
     -- kitty terminal apps
-    [ NS "terminal"     (myTerminal ++ "--name terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
-    , NS "htop"         (myTerminal ++ "--name htop-scratchpad htop") (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
-    , NS "alsamixer"    (myTerminal ++ "alsamixer") (title =? "alsamixer") (centerScreen 0.6 0.7)
-    -- , NS "musicplayer"  (myTerminal ++ "--name ncmpcpp poop") (resource =? "ncmpcpp") (centerScreen 0.7 0.7)
-    , NS "musicplayer"  ("/usr/bin/mocp-scrobbler.py -d; " ++ myTerminal ++ "--name mocp mocp") (resource =? "mocp") (centerScreen 0.7 0.7)
+    [ NS "terminal"     (myTerminal ++ " --name terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
+    , NS "htop"         (myTerminal ++ " --name htop-scratchpad htop") (resource =? "htop-scratchpad") (centerScreen 0.7 0.7)
+    , NS "alsamixer"    (myTerminal ++ " alsamixer") (title =? "alsamixer") (centerScreen 0.6 0.7)
+    -- , NS "musicplayer"  (myTerminal ++ " --name ncmpcpp poop") (resource =? "ncmpcpp") (centerScreen 0.7 0.7)
+    , NS "musicplayer"  ("/usr/bin/mocp-scrobbler.py -d; " ++ myTerminal ++ " --name mocp mocp") (resource =? "mocp") (centerScreen 0.7 0.7)
 
     -- urxvt terminal apps
     -- [ NS "terminal"     (myTerminal ++ " -name terminal-scratchpad") (resource =? "terminal-scratchpad") (placeWindow 0.05 0.02 0.52 0.02)
@@ -592,7 +592,7 @@ myKeys2 conf = let
     -----------------------------------------------------------------------
 
     subKeys "Appearance"
-    [ ("M-S-t"                   , addName "Toggle light/dark colour scheme"     $ spawn "$HOME/.scripts/toggle-colours")
+    [ ("M-S-t"                   , addName "Toggle light/dark colour scheme"     $ spawn "$HOME/.scripts/toggle-colours > $HOME/toggle")
     ] ^++^
 
     -----------------------------------------------------------------------

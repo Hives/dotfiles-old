@@ -20,16 +20,20 @@ darkmode="$HOME/.config/darkmode"
 if [ -e $darkmode ]
 then
     rm $darkmode
+    $(rm $HOME/.config/kitty/kittycolours.conf)
+    $(ln -s $HOME/.config/kitty/light.conf $HOME/.config/kitty/kittycolours.conf)
     if [ "$(pgrep kitty)" ]
     then
-        kitty \@ set-colors \-\-all \-\-configured $HOME/.config/kitty/light.conf
+        $(kitty @ --to=unix:/tmp/mykitty set-colors --all --configured $HOME/.config/kitty/kitty.conf)
     fi
     python $HOME/.scripts/colour-manager.py light-scheme
 else
     touch $darkmode
+    $(rm $HOME/.config/kitty/kittycolours.conf)
+    $(ln -s $HOME/.config/kitty/dark.conf $HOME/.config/kitty/kittycolours.conf)
     if [ "$(pgrep kitty)" ]
     then
-        kitty \@ set-colors \-\-all \-\-configured $HOME/.config/kitty/dark.conf
+        $(kitty @ --to=unix:/tmp/mykitty set-colors --all --configured $HOME/.config/kitty/kitty.conf)
     fi
     python $HOME/.scripts/colour-manager.py dark-scheme
 fi
