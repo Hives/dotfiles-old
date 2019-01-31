@@ -161,17 +161,19 @@ myClickJustFocuses   = True
 -- Applications
 ------------------------------------------------------------------------
 
-myTerminal    = "kitty --single-instance -o enabled_layouts=tall --listen-on unix:/tmp/mykitty"
+myTerminal    = "kitty --single-instance -o enabled_layouts=tall --listen-on unix:/tmp/mykitty --name 'Just a normal terminal'"
+myFileBrowser = myTerminal ++ " ranger"
+-- myTerminal    = "st"
+-- myFileBrowser = myTerminal ++ " -e ranger"
 -- myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1 -show-icons true"
 myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1"
-myFileBrowser = myTerminal ++ " ranger"
 
 jellyBrowser  = "dex $HOME/.local/share/applications/chromium-jelly.desktop"
 jellySlack    = "dex $HOME/.local/share/applications/chromium-slack-jelly.desktop"
 jellySkype    = "dex $HOME/.local/share/applications/chromium-skype-jelly.desktop"
 -- jellySkype    = "skypeforlinux"
 jellyEmail    = "thunderbird"
-jellyNotes    = "urxvt -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
+jellyNotes    = myTerminal ++ " -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
 
 scratchpads =
     -- kitty terminal apps
