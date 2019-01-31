@@ -47,7 +47,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes nil)
- '(package-selected-packages (quote (org-bullets evil))))
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(frame-background-mode nil)
+ '(package-selected-packages (quote (solarized-theme org-bullets evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,9 +63,10 @@
 ;; Solarized
 ;; https://github.com/sellout/emacs-color-theme-solarized
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
+(customize-set-variable 'frame-background-mode 'dark)
 (load-theme 'solarized t)
-(set-frame-parameter nil 'background-mode 'light)
-(enable-theme 'solarized)
+; (set-frame-parameter nil 'background-mode 'dark)
+; (enable-theme 'solarized)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tell emacs to use system default to open PDFs
