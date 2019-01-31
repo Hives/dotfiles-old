@@ -23,8 +23,8 @@ alias m="mplayer"
 alias rx="xrdb ~/.Xresources"
 
 alias hosts="sudo vim /etc/hosts"
-
 alias vhosts="sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf"
+alias vimrc="vim ~/.vim/vimrc"
 
 alias weather="curl http://wttr.in/mile+end"
 
