@@ -4,10 +4,21 @@ None
 
 Terminals
 ---------
-URxvt: Bad unicode support, pretty good everything else
-st: Good unicode support, good image support, pain in the ass to configure, colours mess up on vim UI elements (airline etc)
-Termite: No image support, good unicode support
-Kitty: Good unicode support, good image support, "featureful"
+Kitty:
+    Good: unicode support, image support, "featureful"
+    Bad: some unicode characters display clipped, but apparently that's the characters' fault 😕
+Suckless:
+    Good: unicode support, image support
+    Bad: pain in the ass to configure
+         weird colours round edge of screen in vim
+         puts a 1px gap between lines?!
+         don't know how to toggle colours
+URxvt:
+    Bad: unicode support
+    Good: most everything else
+Termite:
+    Good: unicode support
+    Bad: No image support
 
 General
 -------
