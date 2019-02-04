@@ -261,6 +261,7 @@ myManageHook = composeAll
     , appName =? "preview.web.skype.com__en" --> doShift "1" <+> unfloat
     , appName =? "skype" --> doShift "1" <+> unfloat
     , appName =? "jellymould-group.slack.com__messages" --> doShift "1" <+> unfloat
+    , appName =? "makersstudents.slack.com__messages" --> doShift "1" <+> unfloat
     , appName =? "soulseekqt" --> doShift "2"
     , appName =? "transmission-gtk" --> doShift "6"
     , stringProperty "WM_WINDOW_ROLE" =? "browser" --> doShift "7"
@@ -594,7 +595,7 @@ myKeys2 conf = let
     -----------------------------------------------------------------------
 
     subKeys "Appearance"
-    [ ("M-S-t"                   , addName "Toggle light/dark colour scheme"     $ spawn "$HOME/.scripts/toggle-colours > $HOME/toggle")
+    [ ("M-S-t"                   , addName "Toggle light/dark colour scheme"     $ spawn "$HOME/.scripts/toggle-colours")
     ] ^++^
 
     -----------------------------------------------------------------------
