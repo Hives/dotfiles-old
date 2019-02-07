@@ -120,6 +120,28 @@ dunstColours = {
     "frame_critical": urgent
 }
 
+dmenuColours = {
+    "dmenu_fg":        background,
+    "dmenu_bg":        highlight1,
+    "dmenu_select_fg": highlight1,
+    "dmenu_select_bg": background,
+}
+
+###############################################################################
+## Dmenu
+###############################################################################
+
+#  dmenu_output  = '\n# %s\n\n' % schemefile
+
+#  for name, colour in dmenuColours.items():
+#      dmenu_output += '{name}="{colour}"\n'.format(name=name, colour=colour) 
+
+#  dmenu_output += "\n"
+
+#  update_config( path = home + ".scripts/",
+#                 name = "dmenu_pm",
+#                 output = dmenu_output )
+
 ###############################################################################
 ## Dunst
 ###############################################################################
