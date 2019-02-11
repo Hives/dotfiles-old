@@ -22,6 +22,7 @@ Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'micha/vim-colors-solarized'
+" Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } " code completion
 
 call plug#end()
@@ -96,9 +97,19 @@ set smartcase
 set incsearch
 set hlsearch
 
+" SPELLCHECK
+autocmd FileType markdown,mkd setlocal spell
+autocmd FileType text         setlocal spell
+
 " MARKDOWN
 au BufRead,BufNewFile *.md setlocal textwidth=80
-autocmd BufRead,BufNewFile *.md setlocal spell
+
+" PENCIL
+" augroup pencil
+"     autocmd!
+"     autocmd FileType markdown,mkd call pencil#init()
+"     autocmd FileType text         call pencil#init()
+" augroup END
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
