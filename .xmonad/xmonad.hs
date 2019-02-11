@@ -93,11 +93,11 @@ cHotPromptText = "#0e2329"
 -- Theme
 ------------------------------------------------------------------------
 
-border    = 5   -- width of borders
-numIcons  = 7   -- width of system tray in icons
+border    = 5  -- width of borders
+numIcons  = 7  -- width of system tray in icons
 
 topbar    = 8  -- height of top bar
-gutter    = 8   -- spacing around windows
+gutter    = 8  -- spacing around windows
 
 topBarTheme = def
     { fontName                = myFont
@@ -170,8 +170,8 @@ myLauncher    = "rofi -modi \"drun,window,ssh\" -show drun -scroll-method 1"
 
 jellyBrowser  = "dex $HOME/.local/share/applications/chromium-jelly.desktop"
 jellySlack    = "dex $HOME/.local/share/applications/chromium-slack-jelly.desktop"
-jellySkype    = "dex $HOME/.local/share/applications/chromium-skype-jelly.desktop"
--- jellySkype    = "skypeforlinux"
+-- jellySkype    = "dex $HOME/.local/share/applications/chromium-skype-jelly.desktop"
+jellySkype    = "skypeforlinux"
 jellyEmail    = "thunderbird"
 jellyNotes    = myTerminal ++ " -e emacs -nw $HOME/Documents/Jellymould/to-do.org"
 
