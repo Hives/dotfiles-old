@@ -15,12 +15,14 @@
 
 Config
 
-    --{ font              = "xft:Input Sans Narrow:size=10:antialias=true:hinting=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
-    { font              = "xft:Input Sans Compressed:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
+    {
+      -- font              = "xft:Input Sans Compressed:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
+      font              = "xft:Input Sans Compressed:size=10:antialias=true"
     , allDesktops       = True
 
     , bgColor           = "+background+"
     , fgColor           = "+foreground+"
+    -- workspace indicators don't work right if alpha is turned on?!
     -- , alpha             = 200
     , overrideRedirect  = True
     , commands           = [
