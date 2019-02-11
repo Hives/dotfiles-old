@@ -8,9 +8,9 @@ xkb_keymap {
         include "pc+gb+inet(evdev)+ctrl(nocaps)"
 
         // press tab, get hyper
-		key  <TAB> { [ Hyper_L, Hyper_L                        ] };
+		key  <TAB> { [ Super_L, Super_L                        ] };
         // maps real tab behavior to some random keycode so it's still available to xcape
-		key <I252> { [ Tab,  ISO_Left_Tab                      ] };
+        key <I252> { [ Tab,  ISO_Left_Tab                      ] };
  
 	};
 	xkb_geometry  { include "pc(pc105)"	};

@@ -10,7 +10,7 @@ xkbcomp $HOME/.xkb/keys-iso.xkb $DISPLAY
 killall xcape -q
 
 # make the hyper act like its normal keys when tapped
-xcape -e 'Hyper_L=Tab'
+xcape -e 'Super_L=Tab'
 
 # make tapped Ctrl behave like Escape but with a very short timeout
 xcape -e 'Control_L=Escape' -t 150
