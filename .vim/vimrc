@@ -22,16 +22,14 @@ Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'micha/vim-colors-solarized'
+" Plug 'hives/goyo.vim' " distraction free editing (my fork)
 " Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } " code completion
 
 call plug#end()
 
-set noshowmode " hide --INSERT--, not required with coloured status bar
-" POWERLINE
-" let g:powerline_pycmd = "py3"
 " LIGHTLINE
-" let g:lightline = { 'colorscheme': 'solarized' }
+set noshowmode " hide --INSERT--, not required with coloured status bar
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -43,6 +41,7 @@ let g:lightline = {
       \ },
       \ }
 
+" append * for 'changes need saving' to the filename
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' *' : ''
@@ -51,9 +50,6 @@ endfunction
 
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
-" AIRLINE
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'solarized'
 
 " NERD COMMENTER
 let g:NERDSpaceDelims = 1
@@ -65,6 +61,11 @@ vmap <C-_> <Plug>NERDCommenterToggle<CR>
 colorscheme solarized
 set background=dark
 call togglebg#map("<F5>")
+
+" GOYO
+" let g:goyo_width = 100
+" let g:goyo_height = '100%'
+
 
 " SPACES AND TABS
 set tabstop=4             " number of visual spaces per tab
@@ -78,7 +79,17 @@ autocmd Filetype liquid set softtabstop=2
 autocmd Filetype liquid set shiftwidth=2
 autocmd Filetype liquid set tabstop=2
 
+if has('linebreak')
+  set linebreak                       " wrap long lines at characters in 'breakat'
+endif
+
+if has('linebreak')
+  let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+endif
+
+
 " UI CONFIG
+" set list                              " show whitespace while typing
 set number
 set showcmd
 set cursorline
@@ -98,18 +109,11 @@ set incsearch
 set hlsearch
 
 " SPELLCHECK
-autocmd FileType markdown,mkd setlocal spell
-autocmd FileType text         setlocal spell
+" autocmd FileType markdown,mkd setlocal spell
+" autocmd FileType text         setlocal spell
 
 " MARKDOWN
-au BufRead,BufNewFile *.md setlocal textwidth=80
-
-" PENCIL
-" augroup pencil
-"     autocmd!
-"     autocmd FileType markdown,mkd call pencil#init()
-"     autocmd FileType text         call pencil#init()
-" augroup END
+au BufRead,BufNewFile *.md call functions#plaintext()
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
