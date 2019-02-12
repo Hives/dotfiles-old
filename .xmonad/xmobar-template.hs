@@ -17,6 +17,7 @@ Config
 
     {
       -- font              = "xft:Input Sans Compressed:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
+      -- since 11/02/2019 xmobar breaks if you include Font Awesome?!?
       font              = "xft:Input Sans Compressed:size=10:antialias=true"
     , allDesktops       = True
 
