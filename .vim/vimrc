@@ -18,10 +18,10 @@ Plug 'chaoren/vim-wordmotion' " provides CamelCase motion through words
 Plug 'tpope/vim-liquid' " syntax highlighting for liquid + jekyll enhancements
 Plug 'andymass/vim-matchup' " enhances vim's '%' motion and matching
 Plug 'scrooloose/nerdcommenter' " automated commenting
-Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'micha/vim-colors-solarized'
+Plug 'itchyny/lightline.vim' " status bar
+Plug 'micha/vim-colors-solarized' " the low contrast colour scheme we all know and love
+Plug 'Sirver/ultisnips' " snippets
+Plug 'junegunn/fzf' " fuzzy finder - requires fzf to be installed seperately
 " Plug 'hives/goyo.vim' " distraction free editing (my fork)
 " Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } " code completion
@@ -43,8 +43,8 @@ let g:lightline = {
 
 " append * for 'changes need saving' to the filename
 function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' *' : ''
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   return filename . modified
 endfunction
 
@@ -66,6 +66,20 @@ call togglebg#map("<F5>")
 " let g:goyo_width = 100
 " let g:goyo_height = '100%'
 
+" ULTISNIPS
+" let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+" " better key bindings for UltiSnipsExpandTrigger
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " SPACES AND TABS
 set tabstop=4             " number of visual spaces per tab
