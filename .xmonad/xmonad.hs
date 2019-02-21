@@ -197,6 +197,8 @@ scratchpads =
 
     , NS "calculator"   "speedcrunch" (className =? "SpeedCrunch") (placeWindow 0.05 0.05 0.55 0.55)
     , NS "calendar"     "$HOME/.scripts/launch-google-calendar-app" (fmap ("calendar.google.com" `isInfixOf`) appName) (rightPanel 0.02)
+    , NS "spotify"      "spotify" (resource =? "spotify") (centerScreen 0.7 0.7)
+    -- , NS "spotify"      "spotify" (className =? "Spotify") (centerScreen 0.7 0.7)
     -- , NS "ghci"       "urxvtc -e ghci" (title =? "ghci") (centerScreen 0.7 0.7)
     ]
 
@@ -284,7 +286,8 @@ myManageHook = composeAll
     , appName =? "Msgcompose" --> centerScreen 0.61 0.7
     , title =? "Thunderbird Preferences" --> centerScreen 0.5 0.4
     , appName =? "mailspring" --> doShift "0"
-    , title =? "Unlock Login Keyring" --> doShift "0" <+> doCenterFloat
+    -- , title =? "Unlock Login Keyring" --> doShift "0" <+> doCenterFloat
+    , title =? "Unlock Login Keyring" --> doCenterFloat
 
     -- GIMP
     , stringProperty "WM_WINDOW_ROLE" =? "gimp-message-dialog" --> centerScreen 0.3 0.3
@@ -560,6 +563,7 @@ myKeys2 conf = let
     -- , ("M1-C-d"                  , addName "NSP terminal (~/Downloads)"          $ namedScratchpadAction scratchpads "downloads")
     , ("M-m"                     , addName "NSP music player"                    $ namedScratchpadAction scratchpads "musicplayer")
     , ("<XF86Tools>"             , addName "NSP music player"                    $ namedScratchpadAction scratchpads "musicplayer")
+    , ("M-p"                     , addName "NSP Spotify"                         $ namedScratchpadAction scratchpads "spotify")
     , ("M-c"                     , addName "NSP Google"                          $ namedScratchpadAction scratchpads "calendar")
     , ("M-S-h"                   , addName "NSP htop"                            $ namedScratchpadAction scratchpads "htop")
     , ("M-v"                     , addName "NSP alsamixer"                       $ namedScratchpadAction scratchpads "alsamixer")
