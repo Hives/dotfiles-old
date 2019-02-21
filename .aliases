@@ -18,7 +18,7 @@ alias res="mplayer http://54.77.136.103:8000/resonance"
 # alias rad4="get_iplayer --stream --type=liveradio \"Radio 4 FM\" --player=\"mplayer -cache 256 -\" --modes=hlsaacstd"
 # alias rad3="get_iplayer --stream --type=liveradio \"Radio 3 FM\" --player=\"mplayer -cache 256 -\" --modes=hlsaacstd"
 
-alias m="mplayer"
+alias m="mplayer -af scaletempo=speed=tempo"
 
 alias rx="xrdb ~/.Xresources"
 
