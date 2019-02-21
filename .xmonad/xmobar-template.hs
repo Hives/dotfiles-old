@@ -17,7 +17,7 @@ Config
 
     {
       -- font              = "xft:Input Sans Compressed:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
-      -- since 11/02/2019 xmobar breaks if you include Font Awesome?!?
+      -- since 11/02/2019 xmonad can't work out height of xmobar if you include Font Awesome?!?
       font              = "xft:Input Sans Compressed:size=10:antialias=true"
     , allDesktops       = True
 
@@ -29,13 +29,13 @@ Config
     , commands           = [
           Run StdinReader
         , Run Com "/home/hives/.scripts/whats-playing" [] "nowplaying" 10
-        --, Run Volume "default" "Master"
-        --    [ "-t", "<status>", "--"
-        --    , "--on", "<fc=+green+> <volume>%</fc>"
-        --    , "--onc", "+green+"
-        --    , "--off", "<fc=+red_bright+> MUTE</fc>"
-        --    , "--offc", "+red_bright+"
-        --    ] 1
+        , Run Volume "default" "Master"
+           [ "-t", "<status>", "--"
+           , "--on", "<fc=+green+> <volume>%</fc>"
+           , "--onc", "+green+"
+           , "--off", "<fc=+red_bright+> MUTE</fc>"
+           , "--offc", "+red_bright+"
+           ] 1
         , Run Cpu
             [ "-t"," C/M <vbar>"
             --, "-p", "2"
@@ -83,8 +83,8 @@ Config
         ]
         , sepChar            = "%"
         , alignSep           = "}{"
-        , template           = "%StdinReader% }{ %nowplaying%%cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
-        --, template           = "%StdinReader% }{ %nowplaying%%default:Master% | %cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
+        -- , template           = "%StdinReader% }{ %nowplaying%%cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
+        , template           = "%StdinReader% }{ %nowplaying%%default:Master% | %cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
     }
 
 -- not really haskell, but close enough
