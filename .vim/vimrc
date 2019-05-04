@@ -12,34 +12,70 @@ function! BuildYCM(info)
     endif
 endfunction
 
-Plug 'tpope/vim-sensible' " a set of sensible defaults
-Plug 'w0rp/ale' " asynchronous linting/fixing
-Plug 'chaoren/vim-wordmotion' " provides CamelCase motion through words
+" Plug 'w0rp/ale' " asynchronous linting/fixing
+Plug 'chriskempson/base16-vim'
+Plug 'wincent/command-t' " Greg Hurrell's fuzzy file finder
+" Plug 'junegunn/fzf' " fuzzy finder - requires fzf to be installed seperately
+" Plug 'junegunn/fzf.vim' " Things you can do with fzf and Vim
+Plug 'itchyny/lightline.vim' " status bar
+Plug 'aliou/markoff.vim' " open files in Markoff
+Plug 'scrooloose/nerdcommenter' " automated commenting
+Plug 'scrooloose/nerdtree' " file system explorer
+Plug 'tpope/vim-sleuth' " automatic indentation detection
+Plug 'hives/vim-base16-lightline' " base16 theme for lightline
+" Plug 'jeetsukumaran/vim-buffergator' " Vim plugin to manage buffers.
 Plug 'tpope/vim-liquid' " syntax highlighting for liquid + jekyll enhancements
 Plug 'andymass/vim-matchup' " enhances vim's '%' motion and matching
-Plug 'scrooloose/nerdcommenter' " automated commenting
-Plug 'itchyny/lightline.vim' " status bar
-Plug 'micha/vim-colors-solarized' " the low contrast colour scheme we all know and love
+Plug 'tpope/vim-sensible' " a set of sensible defaults
+Plug 'honza/vim-snippets' " multi-language snippets for use with ultisnips
+Plug 'tpope/vim-surround' " edit parantheses, brackets, quotes, html tags + more
+" Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'wincent/terminus' " enhanced terminal integration including mouse stuff
+Plug 'chaoren/vim-wordmotion' " provides CamelCase motion through words
 Plug 'Sirver/ultisnips' " snippets
-Plug 'junegunn/fzf' " fuzzy finder - requires fzf to be installed seperately
-" Plug 'hives/goyo.vim' " distraction free editing (my fork)
-" Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } " code completion
+" Plug 'reedes/vim-pencil'
 
 call plug#end()
+
+" LEADER
+let mapleader = " "
+
+" ALE
+" let g:ale_sign_error = '•' " '>'
+" let g:ale_sign_warning = '•' " '-'
+
+" highlight ALEError ctermbg=DarkMagenta
+" highlight ALEWarning ctermbg=DarkMagenta
+
+" BASE16 COLOURS
+syntax enable
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" COMMAND T
+nnoremap <leader>t :CommandT<cr>
+
+if &term =~ "xterm" || &term =~ "screen"
+  let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+endif
 
 " LIGHTLINE
 set noshowmode " hide --INSERT--, not required with coloured status bar
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' ] ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
-      \ }
+       \ 'colorscheme': 'base16',
+       \ 'active': {
+       \   'left': [ [ 'mode', 'paste' ],
+       \             [ 'readonly', 'filename' ] ],
+       \   'right': [ [ 'percent', 'lineinfo' ],
+       \              [ 'filetype' ] ]
+       \ },
+       \ 'component_function': {
+       \   'filename': 'LightlineFilename',
+       \ },
+       \ }
 
 " append * for 'changes need saving' to the filename
 function! LightlineFilename()
@@ -48,19 +84,19 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
-
 " NERD COMMENTER
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>
 
+" NERD TREE
+" map <C-n> :NERDTreeToggle<CR>
+
 " SOLARIZED
-colorscheme solarized
-set background=dark
-call togglebg#map("<F5>")
+" colorscheme solarized
+" set background=dark
+" call togglebg#map("<F5>")
 
 " GOYO
 " let g:goyo_width = 100
@@ -82,13 +118,23 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " FZF
-nnoremap <c-p> :FZF<cr>
+" nnoremap <leader>p :FZF<cr>
+" nnoremap <leader>b :Buffer<cr>
+" " Default fzf layout
+" " - down / up / left / right
+" let g:fzf_layout = { 'up': '~40%' }
+
+" BUFFERS
+set hidden
 
 " SPACES AND TABS
 set tabstop=4             " number of visual spaces per tab
 set softtabstop=4         " number of spaces in tab when editing
 set shiftwidth=4
 set expandtab             " tabs are spaces
+autocmd Filetype javascript set softtabstop=2
+autocmd Filetype javascript set shiftwidth=2
+autocmd Filetype javascript set tabstop=2
 autocmd Filetype ruby set softtabstop=2
 autocmd Filetype ruby set shiftwidth=2
 autocmd Filetype ruby set tabstop=2
@@ -103,7 +149,6 @@ endif
 if has('linebreak')
   let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
 endif
-
 
 " UI CONFIG
 " set list                              " show whitespace while typing
