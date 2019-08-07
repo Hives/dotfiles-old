@@ -17,8 +17,7 @@ Config
 
     {
       -- font              = "xft:Input Sans Compressed:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
-      -- since 11/02/2019 xmonad can't work out height of xmobar if you include Font Awesome?!?
-      font              = "xft:Input Sans Compressed:size=10:antialias=true"
+      font              = "xft:RobotoMono Nerd Font:size=10:antialias=true,Font Awesome 5 Free:style=Solid:size=9:hinting=true"
     , allDesktops       = True
 
     , bgColor           = "+background+"
@@ -29,13 +28,13 @@ Config
     , commands           = [
           Run StdinReader
         , Run Com "/home/hives/.scripts/whats-playing" [] "nowplaying" 10
-        , Run Volume "default" "Master"
-           [ "-t", "<status>", "--"
-           , "--on", "<fc=+green+> <volume>%</fc>"
-           , "--onc", "+green+"
-           , "--off", "<fc=+red_bright+> MUTE</fc>"
-           , "--offc", "+red_bright+"
-           ] 1
+        -- , Run Volume "default" "Master"
+        --    [ "-t", "<status>", "--"
+        --    , "--on", "<fc=+green+> <volume>%</fc>"
+        --    , "--onc", "+green+"
+        --    , "--off", "<fc=+red_bright+> MUTE</fc>"
+        --    , "--offc", "+red_bright+"
+        --    ] 1
         , Run Cpu
             [ "-t"," C/M <vbar>"
             --, "-p", "2"
@@ -68,9 +67,9 @@ Config
             , "--off-icon-pattern", ""
             , "--on-icon-pattern", ""
             ] 10
-        , Run Weather "EGLC" -- London City Airport
-            [ "--template", "<fc=+green+> <tempC>°C</fc>" -- green
-            ] 600
+        -- , Run Weather "EGLC" -- London City Airport
+        --     [ "--template", "<fc=+green+> <tempC>°C</fc>" -- green
+        --     ] 600
         , Run Date "<fc=+blue+> %A %d %B</fc> | <fc=+blue+> %l:%M %P</fc>" "date" 10
         -- , Run Network "enp0s31f6"
         --     [ "-t", " <fc=#6c71c4>\xf065 ETH<rxipat></fc>"
@@ -83,8 +82,9 @@ Config
         ]
         , sepChar            = "%"
         , alignSep           = "}{"
+        , template           = "%StdinReader% }{ %nowplaying%%cpu%%memory% | %net% | %battery% | | %date% "
         -- , template           = "%StdinReader% }{ %nowplaying%%cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
-        , template           = "%StdinReader% }{ %nowplaying%%default:Master% | %cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
+        -- , template           = "%StdinReader% }{ %nowplaying%%default:Master% | %cpu%%memory% | %net% | %battery% | %EGLC% | %date% "
     }
 
 -- not really haskell, but close enough

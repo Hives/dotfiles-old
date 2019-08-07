@@ -29,7 +29,7 @@ fi
 
 $HOME/.scripts/remap-keys-magicforce68 &
 
-$HOME/.monitors/laptop-and-big-monitor
+$HOME/.monitors/laptop-in-front-of-big-monitor
 
 # this loads the dark scheme, including the wallpaper.
 $HOME/.scripts/dark-scheme &

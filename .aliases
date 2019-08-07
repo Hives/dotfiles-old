@@ -29,7 +29,14 @@ alias vimrc="vim ~/.vim/vimrc"
 alias weather="curl http://wttr.in/mile+end"
 
 alias gd="cd ~/Downloads; ls -lrt"
-alias gdoc="cd ~/Documents"
-alias gm="cd ~/Music"
+alias god="cd ~/Documents; ls -lrt"
 
 source ~/.aliases-local
+
+alias g="git"
+alias ga="git add"
+alias gs="git status"
+alias gc="git commit -v"
+alias 'gc!'="git commit -v --amend"
+alias gcb="git checkout -b"
+

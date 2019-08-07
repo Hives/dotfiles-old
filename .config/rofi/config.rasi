@@ -34,7 +34,8 @@ border-color: #268bd2;
     foreground-color: @normal-foreground;
     background-color: @normal-background;
 
-    font: "Input Sans Narrow 12";
+    /* font: "Input Sans Narrow 12"; */
+    font: "RobotoMono Nerd Font 12";
 
 }
 

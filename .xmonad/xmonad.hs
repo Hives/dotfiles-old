@@ -93,7 +93,7 @@ cHotPromptText = "#0e2329"
 -- Theme
 ------------------------------------------------------------------------
 
-border    = 5  -- width of borders
+border    = 3  -- width of borders
 numIcons  = 7  -- width of system tray in icons
 
 topbar    = 8  -- height of top bar
@@ -133,7 +133,7 @@ myPromptTheme                 = def
     , promptBorderWidth       = 0--border
     , position                = Top
     , font                    = myPromptFont 
-    , height                  = 25
+    , height                  = 21
     , promptKeymap            = defaultXPKeymap' isWordSeparator
     } where isWordSeparator c = isSpace c || c == '/'
 
@@ -149,8 +149,10 @@ myShowWNameTheme = def
     , swn_color               = "#FFFFFF"
     }
 
-myFont       = "xft:Input Sans Compressed:size=10:antialias=true:hinting=true"
-myPromptFont = "xft:Input Sans Compressed:size=10:antialias=true:hinting=true"
+-- myFont       = "xft:Input Sans Compressed:size=10:antialias=true:hinting=true"
+myFont       = "xft:RobotoMono Nerd Font:size=10:antialias=true:hinting=true"
+-- myPromptFont = "xft:Input Sans Compressed:size=10:antialias=true:hinting=true"
+myPromptFont = "xft:RobotoMono Nerd Font:size=10:antialias=true:hinting=true"
 myBIGFont    = "xft:Input Sans:style=Bold:pixelsize=180:antialias=true:hinting=true"
 -- myBIGFont    = "xft:Eurostar Black Extended:style=Regular:pixelsize=180:hinting=true"
 
@@ -268,6 +270,7 @@ myManageHook = composeAll
     , appName =? "transmission-gtk" --> doShift "6"
     , stringProperty "WM_WINDOW_ROLE" =? "browser" --> doShift "7"
     , fmap ("Sublime Text (UNREGISTERED)" `isInfixOf`) title --> doShift "9"
+    , fmap ("jetbrains" `isInfixOf`) className --> doShift "8"
 
     -- Pop up help pages
     , title =? "Paul's Special Less" --> centerScreen 0.5 0.9
@@ -335,7 +338,7 @@ myLayoutHook = smartBorders
              $ fullScreenToggle
              $ hiddenWindows
              $ avoidStruts
-             $ dwindle ||| tabs ||| tall
+             $ tall ||| dwindle ||| tabs
              -- $ tall ||| tabs
     where
 
