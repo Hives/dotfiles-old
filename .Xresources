@@ -1,0 +1,73 @@
+! colours from colour manager go below
+! dont fiddle with these lines or it might mess everything up
+
+! ʕっ•ᴥ•ʔっ COLOURS START
+#include "/home/hives/.config/xcolors/dark-scheme"
+! ʕっ•ᴥ•ʔっ COLOURS END
+
+*.alpha: 150
+
+!------------------------------------------------------------------------------
+! u r x v t
+
+! kind of a hack to make Solarized colours work correctly
+URxvt.intensityStyles: false
+
+! URxvt.font:            xft:Input Mono Narrow:size=10
+! URxvt.font:            xft:Input Mono Narrow:size=10:hinting=true,FontAwesome:size=9:hinting=true
+! URxvt.font:            xft:Input Mono Condensed:size=10:hinting=true,FontAwesome:size=9:hinting=true
+!  URxvt.font:            xft:Input Mono Compressed:size=10:hinting=true,FontAwesome:size=9:hinting=true
+! URxvt.font:            xft:Input Mono Compressed:size=10:hinting=true
+URxvt.font:            xft:Inconsolata:size=10:hinting=true,FontAwesome:size=9:hinting=true
+! URxvt.font:            xft:Iosevka SS05:size=11:hinting=true,FontAwesome:size=9:hinting=true
+! URxvt.font:            xft:Iosevka\ SS05:size=11
+
+!URxvt*geometry:        112x22  
+URxvt*scrollBar:       false
+URxvt*scrollBar_right: true
+!URxvt*scrollColor:     #000000
+
+! disables ctrl-shift binding for ISO 14755 mode to stop it interfering with
+! vim shortcuts
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!! Extensions
+URxvt.perl-ext-common: default,fullscreen,matcher,resize-font,keyboard-select,config-reload
+! disabled: tabbedex, because it stops urxvt redrawing the screen on font size change :-(
+
+!! config-reload
+!! https://github.com/regnarg/urxvt-config-reload
+!! has the following dependencies: AnyEvent, Linux::FD, common::sense
+
+!! tabbedex
+! disabled because it stops urxvt redrawing the screen on font size change :-(
+!! https://aur.archlinux.org/packages/urxvt-tabbedex-git/
+!! only the "-git" version includes no-tabbed-keys
+!! hides tab bar if only one tab
+! URxvt.tabbed.autohide: true
+! URxvt.tabbed.no-tabbedex-keys: true
+! URxvt.keysym.Control-t: perl:tabbedex:new_tab
+! URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+! URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+! URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+! URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+! URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+
+
+!! keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+!! matcher
+URxvt.url-launcher:    /usr/bin/xdg-open
+URxvt.matcher.button:  1
+
+!! resize-font
+!! And re-bind some keymappings (if you want, below are the defaults):
+!! URxvt.keysym.C-minus:     resize-font:smaller
+!! URxvt.keysym.C-plus:      resize-font:bigger
+!! URxvt.keysym.C-equal:     resize-font:reset
+!! URxvt.keysym.C-question:  resize-font:show
+!!
+!! You can also configure the number of steps to take when changing the size:
+URxvt.resize-font.step: 1
